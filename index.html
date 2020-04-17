@@ -39,7 +39,7 @@ function setTime(){
 	$("#hours").text(zeros(hours));
 	$("#minutes").text(zeros(minutes));
 	$("#seconds").text(zeros(seconds));
-	$("#text").text(getText((hours+2) % 24, minutes, seconds));
+	$("#text").text(getText(hours, minutes, seconds));
 	setTimeout(setTime, 500);
 }
 
