@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Est-il trop tard ?</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
+</head>
+
+<body>
+	<div id="center"><div><span id="hours"></span>:<span id="minutes"></span>:<span id="seconds"></span><br><span id="text"></span></div></div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</body>
+
+<style>
+body{
+	background-color: #006378;
+	color: white;
+	font-size: 70px;
+	font-weight: bold;
+	font-family: 'Quicksand', Sans-serif;
+}
+#center{
+	height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	text-align:center;
+}
+
+</style>
+<script>
+$(document).ready(function(){
+function setTime(){
+	var today = new Date();
+	var hours = today.getHours();
+	var minutes = today.getMinutes();
+	var seconds = today.getSeconds();
+	$("#hours").text(zeros(hours));
+	$("#minutes").text(zeros(minutes));
+	$("#seconds").text(zeros(seconds));
+	$("#text").text(getText((hours+2) % 24, minutes, seconds));
+	setTimeout(setTime, 500);
+}
+
+function zeros(time){
+	if(time<10){
+		return "0" + time
+	}else{
+		return time
+	}
+}
+
+function getText(hours, minutes, seconds){
+	if(hours == 0 && minutes == 0){
+		return "Au dodo";
+	} else if(hours == 0 && minutes > 0 && minutes < 4){
+		return "Raté !"
+	} else if(hours == 0 && minutes >= 4){
+		return "\"Dodo\" ? ♥"
+	} else if(hours == 7 || hours == 8){
+		return "Trop tôt"
+	} else if(hours == 12 && minutes == 0){
+		return "Nam Nam"
+	} else if(hours == 4){
+		return "Il faudra peut être envisager le dodo"
+	} else if(hours == 5 || hours == 6){
+		return "Ça sert plus à rien de s'endormir maintenant"
+	} else if(hours == 1){
+		return "C'est l'heure de l'apéro à New York"
+	} else if(hours == 2){
+		return "Il faudrait éventuellement songer à... mais en fait non"
+	} else if(hours == 3){
+		return "Si tu as partiels demain, au dodo. Sauf si tu as pas révisé"
+	}else{
+		return "Il n'est pas trop tard"
+	}
+}
+setTime();
+});
+</script>
+</html>
