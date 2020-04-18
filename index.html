@@ -72,6 +72,8 @@ function getText(hours, minutes, seconds){
 		return "Il faudrait éventuellement songer à... mais en fait non"
 	} else if(hours == 3){
 		return "Si tu as partiels demain, au dodo. Sauf si tu as pas révisé"
+	}else if(hours == 20 && minutes >= 30 && minutes <= 59){
+		return "C'est l'heure de faire des cookies"
 	}else{
 		return "Il n'est pas trop tard"
 	}
